@@ -1,0 +1,19 @@
+<section data-ng-controller="VersesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Verses</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="verse in verses" data-ng-href="#!/verses/{{verse._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="verse.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="verse.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="verse.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!verses.$resolved || verses.length">
+    	No Verses yet, why don't you <a href="/#!/verses/create">create one</a>?
+    </div>
+</section>
